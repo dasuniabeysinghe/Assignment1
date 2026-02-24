@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIFY - Flower Shop</title>
+
+    <!-- CDN awesome_link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- css file_link -->
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <header>
+        <label class="fas fa-bars"></label>
+        <a href="#" class="logo">GIFY<span>.</span></a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="icons">
+            <a href="#" class="fas fa-search"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" id="user-icon" class="fas fa-user"></a>
+        </div>
+    </header>
+
+    <!-- FIXED LOGIN MODAL - MATCHES CSS -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            
+            <!-- CLOSE BUTTON -->
+            <span id="close-modal" class="close">&times;</span>
+
+            <div class="container" id="modalContainer">
+
+                <!-- SIGN UP FORM -->
+                <div class="container_form container--signup">
+                    <form class="form" id="form1">
+                        <h2 class="form_title">Create Account</h2>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Full Name" class="input" required />
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" class="input" required />
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" class="input" required />
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm Password" class="input" required />
+                        </div>
+                        
+                        <div class="terms">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I Accept the <a href="#">Terms & Conditions</a></label>
+                        </div>
+                        
+                        <button type="submit" class="popup-btn">SIGN UP</button> 
+                    </form>
+                </div>
+
+                <!-- SIGN IN FORM -->
+                <div class="container_form container--signin">
+                    <form class="form" id="form2">
+                        <h2 class="form_title">Welcome Back</h2>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" class="input" required />
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" class="input" required />
+                        </div>
+                        
+                        <div class="remember-forgot">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                            <a href="#" class="link">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="popup-btn">SIGN IN</button>
+                        
+                        <div class="social-login">
+                            <p>Or Continue With</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- OVERLAY PANEL (FOR SWITCHING) -->
+                <div class="container_overlay">
+                    <div class="overlay">
+                        
+                        <!-- LEFT PANEL - SHOWS WHEN ON SIGN IN -->
+                        <div class="overlay_panel overlay--left">
+                            <h2>Already Have An Account?</h2>
+                            <p>Sign In To Continue Your Flower Journey</p>
+                            <button class="popup-btn ghost" id="signIn">SIGN IN</button>
+                        </div>
+                        
+                        <!-- RIGHT PANEL - SHOWS WHEN ON SIGN UP -->
+                        <div class="overlay_panel overlay--right">
+                            <h2>New Here?</h2>
+                            <p>Create An Account And Get Special Offers</p>
+                            <button class="popup-btn ghost" id="signUp">SIGN UP</button>
+                        </div>
+                        
+                        <!-- Decorative flowers -->
+                        <div class="floating-flower flower-1">🌸</div>
+                        <div class="floating-flower flower-2">🌺</div>
+                        <div class="floating-flower flower-3">🌹</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Fresh flowers</h3>
+            <span>Blooming with beauty and fragrance</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h1 class="heading"> <span>About</span> Us</h1>
+        <div class="row">
+            <div class="video-container">
+                <video src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/mixkit-view-to-the-sideboard-of-a-flower-shop-4742-hd-ready.mp4" loop autoplay muted></video>
+                <h3>Our Story</h3>
+            </div>
+            <div class ="content">
+                <h3>We are passionate about flowers</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="icons-container">
+        <div class="icons">
+            <video src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/free-delivery.mp4" loop autoplay muted></video>
+            <div class="info">
+                <h3>Free delivery</h3>
+                <span>On all orders </span>
+            </div>
+        </div>
+        
+        <div class="icons">
+            <video src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/return-of-investment.mp4" loop autoplay muted></video>
+            <div class="info">
+                <h3>10 days returns</h3>
+                <span>money back guarantee</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <video src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/sales.mp4" loop autoplay muted></video>
+            <div class="info">
+                <h3>offer & gifts</h3>
+                <span>on all orders</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <video src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/payment.mp4" loop autoplay muted></video>
+            <div class="info">
+                <h3>Secure Payment</h3>
+                <span>protected by paypal</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <h1 class="heading">Customer <span>Reviews</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+                <div class="user">
+                    <img src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/WhatsApp Image 2026-02-23 at 00.26.07 (1).jpeg" alt="">
+                    <div class="user_info">
+                        <h3>Dasun jayathilaka</h3>
+                        <span>Verified Buyer</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+                <div class="user">
+                    <img src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/WhatsApp Image 2026-02-23 at 00.26.07.jpeg" alt="">
+                    <div class="user_info">
+                        <h3>Anne Fernando</h3>
+                        <span>Verified Buyer</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+                <div class="user">
+                    <img src="C:/Users/Tharindu/OneDrive - NSBM/WEB Assiment/scource/WhatsApp Image 2026-02-23 at 00.26.08.jpeg" alt="">
+                    <div class="user_info">
+                        <h3>sanjula lakshan</h3>
+                        <span>Verified Buyer</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const menuBtn = document.querySelector('header label.fas.fa-bars');
+            const navbar = document.querySelector('header .navbar');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    navbar.classList.toggle('active'); 
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (navbar && !navbar.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+                    navbar.classList.remove('active');
+                }
+            });
+
+            const links = navbar.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navbar.classList.remove('active'); 
+                });
+            });
+        
+            // LOGIN MODAL - FIXED
+            const userIcon = document.getElementById('user-icon');
+            const modal = document.getElementById('login-modal');
+            const closeModal = document.getElementById('close-modal');
+
+            if (userIcon && modal && closeModal) {
+                userIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeModal.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // SIGN IN / SIGN UP SWITCH
+            const container = document.getElementById('modalContainer');
+            const signInBtn = document.getElementById('signIn');
+            const signUpBtn = document.getElementById('signUp');
+
+            if (signUpBtn && container) {
+                signUpBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.classList.add("right-panel-active");
+                });
+            }
+
+            if (signInBtn && container) {
+                signInBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.classList.remove("right-panel-active");
+                });
+            }
+
+            // FORM SUBMISSION
+            const signInForm = document.getElementById('form2');
+            const signUpForm = document.getElementById('form1');
+
+            if (signInForm) {
+                signInForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Login successful!');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            if (signUpForm) {
+                signUpForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const password = signUpForm.querySelectorAll('input[type="password"]')[0].value;
+                    const confirmPass = signUpForm.querySelectorAll('input[type="password"]')[1].value;
+                    
+                    if (password !== confirmPass) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    
+                    alert('Registration successful! Please sign in.');
+                    container.classList.remove("right-panel-active");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
