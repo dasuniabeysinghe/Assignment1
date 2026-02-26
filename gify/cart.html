@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - GIFY Flower Shop</title>
+
+    <!-- CDN awesome_link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- css file_link -->
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <header>
+        <label class="fas fa-bars"></label>
+        <a href="index.html" class="logo">GIFY<span>.</span></a>
+
+        <nav class="navbar">
+            <a href="index.html#home">Home</a>
+            <div class="dropdown">
+                <a href="products.html" class="dropdown-trigger">Products <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="products.html?category=flowers"><i class="fas fa-flower"></i> Flowers</a>
+                    <a href="products.html?category=gifts"><i class="fas fa-gift"></i> Gift Items</a>
+                    <a href="products.html?category=sale"><i class="fas fa-tags"></i> Special Offers</a>
+                </div>
+            </div>
+            <a href="index.html#about">About</a>
+            <a href="index.html#reviews">Reviews</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <div class="icons">
+            <a href="#" class="fas fa-search" id="search-icon"></a>
+            <a href="cart.html" class="fas fa-shopping-cart active" id="cart-icon">
+                <span class="cart-count">0</span>
+            </a>
+            <a href="#" id="user-icon" class="fas fa-user"></a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar" id="search-bar">
+            <input type="text" placeholder="Search flowers, gifts..." id="search-input">
+            <button type="submit" id="search-btn"><i class="fas fa-search"></i></button>
+            <span class="close-search" id="close-search">&times;</span>
+        </div>
+    </header>
+
+    <!-- LOGIN modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <div class="container" id="modalContainer">
+                <!-- SIGN UP part -->
+                <div class="container_form container--signup">
+                    <form class="form" id="form1">
+                        <h2 class="form_title">Create Account</h2>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Full Name" class="input" required />
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" class="input" required />
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" class="input" required />
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm Password" class="input" required />
+                        </div>
+                        <div class="terms">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I Accept the <a href="#">Terms & Conditions</a></label>
+                        </div>
+                        <button type="submit" class="popup-btn">SIGN UP</button> 
+                    </form>
+                </div>
+
+                <!-- SIGN IN part -->
+                <div class="container_form container--signin">
+                    <form class="form" id="form2">
+                        <h2 class="form_title">Welcome Back</h2>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" class="input" required />
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" class="input" required />
+                        </div>
+                        <div class="remember-forgot">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                            <a href="#" class="link">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="popup-btn">SIGN IN</button>
+                        <div class="social-login">
+                            <p>Or Continue With</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- SWITCHING Part -->
+                <div class="container_overlay">
+                    <div class="overlay">
+                        <div class="overlay_panel overlay--left">
+                            <h2>Already Have An Account?</h2>
+                            <p>Sign In To Continue Your Flower Journey</p>
+                            <button class="popup-btn ghost" id="signIn">SIGN IN</button>
+                        </div>
+                        <div class="overlay_panel overlay--right">
+                            <h2>New Here?</h2>
+                            <p>Create An Account And Get Special Offers</p>
+                            <button class="popup-btn ghost" id="signUp">SIGN UP</button>
+                        </div>
+                        <div class="floating-flower flower-1">🌸</div>
+                        <div class="floating-flower flower-2">🌺</div>
+                        <div class="floating-flower flower-3">🌹</div>
+                        <div class="floating-gift gift-1">🎁</div>
+                        <div class="floating-gift gift-2">🎀</div>
+                        <div class="floating-gift gift-3">🧧</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Shopping <span>Cart</span></h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="products.html">Products</a> / <span>Cart</span>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="cart-container">
+            <div class="cart-wrapper">
+                <div class="cart-items">
+                    <h2>Your Cart Items (<span id="cart-count">0</span>)</h2>
+                    <div id="cart-items-list" class="cart-items-list">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span id="shipping">$5.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (10%):</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="continue-shopping-btn" onclick="window.location.href='products.html'">
+                            <i class="fas fa-arrow-left"></i> Continue Shopping
+                        </button>
+                        <button class="checkout-btn" id="checkoutBtn">
+                            <i class="fas fa-lock"></i> Proceed to Checkout
+                        </button>
+                    </div>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-discover"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empty Cart Message -->
+    <div class="empty-cart" id="emptyCart" style="display: none;">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added anything to your cart yet.</p>
+        <a href="products.html" class="shop-now-btn">Shop Now</a>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <span class="close-payment">&times;</span>
+            <h2>Complete Your <span>Payment</span></h2>
+            <div class="payment-body">
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="orderItems"></div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="orderTotal">$0.00</span>
+                    </div>
+                </div>
+                <form id="paymentForm" class="payment-form">
+                    <h3>Payment Details</h3>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="card" checked>
+                            <i class="fas fa-credit-card"></i> Credit Card
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="paypal">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </label>
+                    </div>
+                    <div class="form-group card-details">
+                        <input type="text" placeholder="Card Number" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="CVC" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Cardholder Name" required>
+                    </div>
+                    <button type="submit" class="pay-now-btn">
+                        <i class="fas fa-lock"></i> Pay Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>GIFY<span>.</span></h4>
+                    <p>Bringing beauty and fragrance to your life with our fresh flowers and thoughtful gifts.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                        <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="index.html#reviews"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="products.html?category=flowers"><i class="fas fa-chevron-right"></i> Fresh Flowers</a></li>
+                        <li><a href="products.html?category=gifts"><i class="fas fa-chevron-right"></i> Gift Items</a></li>
+                        <li><a href="products.html?category=occasion"><i class="fas fa-chevron-right"></i> Occasion Specials</a></li>
+                        <li><a href="products.html?category=sale"><i class="fas fa-chevron-right"></i> Sale Items</a></li>
+                        <li><a href="products.html?category=new"><i class="fas fa-chevron-right"></i> New Arrivals</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</li>
+                        <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@gify.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GIFY Flower Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const menuBtn = document.querySelector('header label.fas.fa-bars');
+            const navbar = document.querySelector('header .navbar');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    navbar.classList.toggle('active'); 
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (navbar && !navbar.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+                    navbar.classList.remove('active');
+                }
+            });
+
+            // LOGIN MODAL
+            const userIcon = document.getElementById('user-icon');
+            const modal = document.getElementById('login-modal');
+            const closeModal = document.getElementById('close-modal');
+
+            if (userIcon && modal && closeModal) {
+                userIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeModal.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // SIGN IN / SIGN UP SWITCH
+            const container = document.getElementById('modalContainer');
+            const signInBtn = document.getElementById('signIn');
+            const signUpBtn = document.getElementById('signUp');
+
+            if (signUpBtn && container) {
+                signUpBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.classList.add("right-panel-active");
+                });
+            }
+
+            if (signInBtn && container) {
+                signInBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.classList.remove("right-panel-active");
+                });
+            }
+
+            // FORM SUBMISSION
+            const signInForm = document.getElementById('form2');
+            const signUpForm = document.getElementById('form1');
+
+            if (signInForm) {
+                signInForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Login successful!');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            if (signUpForm) {
+                signUpForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const password = signUpForm.querySelectorAll('input[type="password"]')[0].value;
+                    const confirmPass = signUpForm.querySelectorAll('input[type="password"]')[1].value;
+                    
+                    if (password !== confirmPass) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    
+                    alert('Registration successful! Please sign in.');
+                    container.classList.remove("right-panel-active");
+                });
+            }
+
+            // Search Bar Toggle
+            const searchIcon = document.getElementById('search-icon');
+            const searchBar = document.getElementById('search-bar');
+            const closeSearch = document.getElementById('close-search');
+
+            if (searchIcon && searchBar && closeSearch) {
+                searchIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchBar.classList.toggle('active');
+                });
+
+                closeSearch.addEventListener('click', () => {
+                    searchBar.classList.remove('active');
+                });
+            }
+
+            // Load cart items
+            loadCartItems();
+
+            // Checkout button
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', () => {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    if (cart.length === 0) {
+                        alert('Your cart is empty!');
+                        return;
+                    }
+                    openPaymentModal(cart);
+                });
+            }
+
+            // Payment Modal
+            const paymentModal = document.getElementById('paymentModal');
+            const closePayment = document.querySelector('.close-payment');
+            const paymentForm = document.getElementById('paymentForm');
+
+            if (closePayment) {
+                closePayment.addEventListener('click', () => {
+                    paymentModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const payBtn = paymentForm.querySelector('.pay-now-btn');
+                    payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    payBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert('Payment successful! Thank you for your purchase.');
+                        paymentModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        
+                        // Clear cart
+                        localStorage.removeItem('cart');
+                        loadCartItems();
+                        
+                        payBtn.innerHTML = '<i class="fas fa-lock"></i> Pay Now';
+                        payBtn.disabled = false;
+                    }, 2000);
+                });
+            }
+
+            // Click outside to close modal
+            window.addEventListener('click', (e) => {
+                if (e.target === paymentModal) {
+                    paymentModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Cart Functions
+        function loadCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsList = document.getElementById('cart-items-list');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartSection = document.querySelector('.cart-section');
+            const cartCount = document.getElementById('cart-count');
+            const cartIconCount = document.querySelector('.cart-count');
+
+            // Update cart count in header
+            if (cartIconCount) {
+                cartIconCount.textContent = cart.length;
+            }
+
+            if (cart.length === 0) {
+                // Show empty cart message
+                if (emptyCart) emptyCart.style.display = 'block';
+                if (cartSection) cartSection.style.display = 'none';
+                if (cartCount) cartCount.textContent = '0';
+                return;
+            }
+
+            // Hide empty cart message
+            if (emptyCart) emptyCart.style.display = 'none';
+            if (cartSection) cartSection.style.display = 'block';
+            if (cartCount) cartCount.textContent = cart.length;
+
+            // Group cart items by ID and count quantities
+            const groupedItems = {};
+            cart.forEach(item => {
+                if (groupedItems[item.id]) {
+                    groupedItems[item.id].quantity++;
+                } else {
+                    groupedItems[item.id] = {
+                        ...item,
+                        quantity: 1
+                    };
+                }
+            });
+
+            // Display cart items
+            let itemsHtml = '';
+            let subtotal = 0;
+
+            Object.values(groupedItems).forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                itemsHtml += `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="cart-item-image">
+                            <img src="${item.image || 'https://via.placeholder.com/100'}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p class="cart-item-category">${item.category}</p>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+                        <button class="remove-item" onclick="removeItem(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            cartItemsList.innerHTML = itemsHtml;
+
+            // Calculate totals
+            const tax = subtotal * 0.1;
+            const shipping = 5.00;
+            const total = subtotal + tax + shipping;
+
+            // Update summary
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function updateQuantity(productId, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Find the index of the product to update
+            const index = cart.findIndex(item => item.id === productId);
+            
+            if (index !== -1) {
+                if (change > 0) {
+                    // Add one more of this item
+                    cart.push(cart[index]);
+                } else {
+                    // Remove one of this item
+                    cart.splice(index, 1);
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartItems();
+            
+            // Show notification
+            showNotification('Cart updated!');
+        }
+
+        function removeItem(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Remove all items with this ID
+            cart = cart.filter(item => item.id !== productId);
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartItems();
+            
+            // Show notification
+            showNotification('Item removed from cart!');
+        }
+
+        function openPaymentModal(cart) {
+            const modal = document.getElementById('paymentModal');
+            const orderItems = document.getElementById('orderItems');
+            const orderTotal = document.getElementById('orderTotal');
+            
+            // Group items for display
+            const groupedItems = {};
+            cart.forEach(item => {
+                if (groupedItems[item.id]) {
+                    groupedItems[item.id].quantity++;
+                } else {
+                    groupedItems[item.id] = {
+                        ...item,
+                        quantity: 1
+                    };
+                }
+            });
+            
+            let total = 0;
+            let itemsHtml = '';
+            
+            Object.values(groupedItems).forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHtml += `<div class="order-item">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>$${itemTotal.toFixed(2)}</span>
+                </div>`;
+            });
+            
+            // Add shipping and tax
+            const tax = total * 0.1;
+            const shipping = 5.00;
+            const finalTotal = total + tax + shipping;
+            
+            itemsHtml += `<div class="order-item">
+                <span>Shipping</span>
+                <span>$${shipping.toFixed(2)}</span>
+            </div>`;
+            itemsHtml += `<div class="order-item">
+                <span>Tax (10%)</span>
+                <span>$${tax.toFixed(2)}</span>
+            </div>`;
+            
+            orderItems.innerHTML = itemsHtml;
+            orderTotal.textContent = `$${finalTotal.toFixed(2)}`;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
