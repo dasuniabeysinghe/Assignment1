@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+        }
+
+        .box {
+            max-width: 400px;
+            width: 90%;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        #msg {
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+    <h2>Sending Password</h2>
+    <p>Enter your email and we’ll send Password to your Email.</p>
+
+    <form onsubmit="showSending(event)">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Send Password</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <button onclick="window.location.href='home.html#signin'">Back to Home</button>
+</div>
+
+<script>
+    function showSending(e) {
+        e.preventDefault();
+
+        let msg = document.getElementById("msg");
+        let email = document.getElementById("email").value;
+
+        msg.style.display = "block";
+        msg.style.color = "orange";
+        msg.innerHTML = "Sending...";
+
+        setTimeout(() => {
+            msg.style.color = "green";
+            msg.innerHTML = "A password has been sent to: " + email + " (Check your inbox and spam folder)";
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
